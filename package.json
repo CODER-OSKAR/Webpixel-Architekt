@@ -1,0 +1,27 @@
+{
+  "name": "webpixel-architekt",
+  "version": "1.0.0",
+  "description": "This is a little school Project created with a friend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CODER-OSKAR/Webpixel-Architekt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CODER-OSKAR/Webpixel-Architekt/issues"
+  },
+  "homepage": "https://github.com/CODER-OSKAR/Webpixel-Architekt#readme",
+  "dependencies": {
+    "animejs": "^4.2.2"
+  },
+  "devDependencies": {
+    "vite": "^7.2.7"
+  }
+}
