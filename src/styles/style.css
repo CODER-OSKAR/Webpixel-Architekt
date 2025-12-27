@@ -33,7 +33,6 @@ body {
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
-    margin: var(--margin-lg);
     width: auto !important;
     font-family: "Inter", ui-sans-serif;
     color: var(--text);
@@ -102,30 +101,39 @@ a {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8em;
-    margin: 5rem 0;
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-auto-rows: auto;
+    gap: 8rem;
+    margin: 1rem 0;
     width: 100%;
     background-color: var(--background);
-    position: relative;
 
-    .hero {
-        width: 100%;
-        margin: 2rem 6rem;
+    .fly-in-animation {
+        opacity: 1;
+        transform: translateY(0);
+        scale: 1;
+        animation: fly-in 0.75s ease-in;
+    }
+    .hero,
+    .what-we {
+        height: auto;
+        width: auto;
+        margin: 6rem 2rem;
         display: flex;
         justify-content: center;
+        align-items: center;
+    }
 
-        .hero-body {
-            width: 80%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 5rem;
-        }
+    .main-body {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+    }
 
+    .hero {
         .hero-part-main {
             display: flex;
             flex-direction: column;
@@ -154,9 +162,61 @@ main {
         .hero-image img {
             object-fit: cover;
             aspect-ratio: 4 / 3;
-            width: 70%;
             border-radius: 6px 32px;
             filter: drop-shadow(0 0.15rem 1.3rem rgba(0, 0, 0, 0.5));
+            max-width: 100%;
+            height: auto;
         }
+    }
+
+    .what-we {
+        position: relative;
+
+        .main-body {
+            flex-direction: column !important;
+            gap: 2rem;
+        }
+
+        h2 {
+            font-size: 56px;
+            text-align: center;
+        }
+
+        .present-cards-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 2rem;
+        }
+
+        .present-card {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            padding: 2.5rem;
+            gap: 20px;
+            background-color: hsl(from var(--accent) h s l / 0.25);
+            border-radius: 1rem;
+
+            h4 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+@keyframes fly-in {
+    from {
+        transform: translateY(-12px);
+        opacity: 0;
+        scale: 0.8;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        scale: 1;
     }
 }
