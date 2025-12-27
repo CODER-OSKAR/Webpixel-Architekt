@@ -37,7 +37,7 @@ body {
     width: auto !important;
     font-family: "Inter", ui-sans-serif;
     color: var(--text);
-    background-color: var(--bg);
+    background-color: var(--background);
     scroll-behavior: smooth;
     overflow-x: hidden;
     position: relative;
@@ -94,6 +94,13 @@ a {
     cursor: pointer;
 }
 
+.gradient-text-element {
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -103,4 +110,53 @@ main {
     margin: 5rem 0;
     width: 100%;
     background-color: var(--background);
+    position: relative;
+
+    .hero {
+        width: 100%;
+        margin: 2rem 6rem;
+        display: flex;
+        justify-content: center;
+
+        .hero-body {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .hero-part-main {
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            gap: 3rem;
+        }
+
+        .hero-website-slogan {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            line-height: 1.4;
+            font-size: 66px;
+            font-weight: 700;
+            text-wrap: pretty;
+            text-transform: capitalize;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scale: 1;
+        }
+
+        .hero-image img {
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+            width: 70%;
+            border-radius: 6px 32px;
+            filter: drop-shadow(0 0.15rem 1.3rem rgba(0, 0, 0, 0.5));
+        }
+    }
 }
