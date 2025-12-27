@@ -116,7 +116,8 @@ main {
         animation: fly-in 0.75s ease-in;
     }
     .hero,
-    .what-we {
+    .what-we,
+    .mind-map-display {
         height: auto;
         width: auto;
         margin: 6rem 2rem;
@@ -204,6 +205,14 @@ main {
             h4 {
                 font-size: 1.5rem;
             }
+        }
+    }
+
+    .mind-map-display {
+        .container {
+            width: 100%;
+            height: 800px;
+            background: #00000008;
         }
     }
 }
