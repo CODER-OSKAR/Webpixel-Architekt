@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
 
 * {
     margin: 0;
@@ -7,29 +7,31 @@
     font-family: "Inter", sans-serif;
 }
 
-/*@media (prefers-color-scheme: light) {*/
-:root {
-    --text: hsl(348, 29%, 7%);
-    --background: hsl(330, 25%, 98%);
-    --primary: hsl(346, 29%, 52%);
-    --secondary: hsl(92, 29%, 74%);
-    --accent: hsl(123, 29%, 62%);
-    --border: hsl(240, 4%, 89%);
-}
-/*}*/
-/*@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     :root {
-        --text: hsl(348, 28%, 93%);
-        --background: hsl(330, 20%, 2%);
-        --primary: hsl(346, 29%, 48%);
-        --secondary: hsl(92, 29%, 26%);
-        --accent: hsl(123, 29%, 38%);
-        --border: hsl(240, 4%, 11%);
+        --text: hsl(0, 0%, 0%);
+        --background: hsl(0, 0%, 100%);
+        --primary: hsl(243, 100%, 58%);
+        --secondary: hsl(243, 44%, 51%);
+        --accent: hsl(242, 100%, 27%);
+        --border: hsla(0, 0%, 0%, 0.1);
     }
-}*/
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: hsl(0, 0%, 100%);
+        --background: hsl(240, 18%, 12%);
+        --primary: hsl(243, 100%, 42%);
+        --secondary: hsl(243, 44%, 49%);
+        --accent: hsl(242, 100%, 73%);
+        --border: hsla(0, 0%, 100%, 0.1);
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
@@ -72,18 +74,29 @@ nav {
 
     .nav-items {
         display: flex;
+        flex: 0 0 1;
         gap: 2rem;
     }
 
     .href-container {
         display: flex;
+        flex: 0 0 1;
         gap: 0.5rem;
         align-items: center;
+    }
+
+    .hamburger-menu {
+        display: none;
+        button {
+            background-color: transparent;
+            outline: none;
+            border: none;
+        }
     }
 }
 
 p {
-    font-size: 1rem;
+    font-size: clamp(1vw, 1rem, 5vw);
 }
 
 a {
@@ -106,7 +119,7 @@ main {
     grid-auto-rows: auto;
     gap: 8rem;
     margin: 1rem 0;
-    width: 100%;
+    width: auto;
     background-color: var(--background);
 
     .fly-in-animation {
@@ -118,15 +131,16 @@ main {
     .hero,
     .what-we,
     .mind-map-display {
-        height: auto;
         width: auto;
-        margin: 6rem 2rem;
+        margin: 6rem min(2rem, 1%);
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
 
     .main-body {
+        margin: 0 auto;
         width: 80%;
         display: flex;
         justify-content: space-between;
@@ -134,20 +148,24 @@ main {
         gap: 5rem;
     }
 
+    .main-body > * {
+        min-width: 0;
+    }
+
     .hero {
         .hero-part-main {
             display: flex;
             flex-direction: column;
-            width: 600px;
+            width: auto;
             gap: 3rem;
         }
 
         .hero-website-slogan {
-            white-space: nowrap;
+            white-space: normal;
             text-overflow: ellipsis;
             max-width: 100%;
             line-height: 1.4;
-            font-size: 66px;
+            font-size: clamp(2rem, 6vw, 66px);
             font-weight: 700;
             text-wrap: pretty;
             text-transform: capitalize;
@@ -172,6 +190,7 @@ main {
 
     .what-we {
         position: relative;
+        width: auto;
 
         .main-body {
             flex-direction: column !important;
@@ -179,31 +198,34 @@ main {
         }
 
         h2 {
-            font-size: 56px;
+            font-size: clamp(2rem, 8vw, 56px);
             text-align: center;
         }
 
         .present-cards-section {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: auto;
             gap: 2rem;
+            flex: 1 1 auto;
         }
 
         .present-card {
-            width: 100%;
+            width: auto;
+            flex: 1 1 min(350px, 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
             position: relative;
-            padding: 2.5rem;
+            padding: min(2.5rem, 6%);
             gap: 20px;
             background-color: hsl(from var(--accent) h s l / 0.25);
             border-radius: 1rem;
 
             h4 {
-                font-size: 1.5rem;
+                font-size: clamp(1rem, 4 vw, 2.5rem);
             }
         }
     }
@@ -227,5 +249,11 @@ main {
         transform: translateY(0);
         opacity: 1;
         scale: 1;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        background-color: rgb(17, 213, 213) !important;
     }
 }
