@@ -72,7 +72,7 @@ nav {
         align-items: center;
     }
 
-    .nav-items {
+    .link-elements {
         display: flex;
         flex: 0 0 1;
         gap: 2rem;
@@ -87,11 +87,19 @@ nav {
 
     .hamburger-menu {
         display: none;
-        button {
-            background-color: transparent;
-            outline: none;
-            border: none;
-        }
+        align-items: center;
+    }
+
+    #openbtn,
+    #closebtn {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #closebtn {
+        display: none;
     }
 }
 
@@ -142,6 +150,7 @@ main {
     .main-body {
         margin: 0 auto;
         width: 80%;
+        max-height: 100vh;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -252,8 +261,71 @@ main {
     }
 }
 
-@media screen and (min-width: 1000px) {
-    body {
-        background-color: rgb(17, 213, 213) !important;
+@media screen and (max-width: 1000px) {
+    .hero {
+        .main-body {
+            padding: 5rem 0 0 0;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+            gap: 2rem;
+
+            .hero-website-slogan {
+                font-size: fit-content !important;
+                text-align: center;
+            }
+
+            .hero-undertext {
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 80%;
+            }
+        }
+    }
+    nav {
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        position: none;
+        .hamburger-menu {
+            display: flex !important;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .nav-items[aria-hidden="false"] {
+            position: fixed;
+            display: grid;
+            padding: 1rem;
+            margin: 0;
+            background-color: var(--background);
+            height: 100%;
+            width: max(30%, 200px);
+            justify-content: center;
+            z-index: 9999;
+            top: 0;
+            right: 0;
+            grid-template-areas:
+                ". button"
+                "links links";
+            grid-template-rows: auto 1fr;
+            margin: 0;
+            border-left: 1px solid var(--border);
+
+            .link-elements {
+                flex-direction: column;
+                grid-area: links;
+            }
+
+            #closebtn {
+                display: flex;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                padding: 0;
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
 }
