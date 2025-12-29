@@ -3,17 +3,19 @@
 const openbtn = document.querySelector("#openbtn");
 const closebtn = document.querySelector("#closebtn");
 const toggle = document.querySelector(".nav-items");
-
-closed;
+const disclaimerbtn = document.querySelector("#close-disclaimer");
+const disclaimerctn = document.querySelector(".disclaimer-container");
 
 function enableVisabitiySidebar(element) {
     element.setAttribute("aria-hidden", "false");
-    console.log(element);
 }
 
 function disableVisabitiySidebar(element) {
     element.setAttribute("aria-hidden", "true");
-    console.log(element);
+}
+
+function destroyDisclaimer(element) {
+    element.innerHTML = null;
 }
 
 openbtn.addEventListener("click", (e) => {
@@ -21,4 +23,8 @@ openbtn.addEventListener("click", (e) => {
 });
 closebtn.addEventListener("click", (e) => {
     disableVisabitiySidebar(toggle);
+});
+
+disclaimerbtn.addEventListener("click", (e) => {
+    destroyDisclaimer(disclaimerctn);
 });
