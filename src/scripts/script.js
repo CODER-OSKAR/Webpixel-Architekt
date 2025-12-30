@@ -15,7 +15,12 @@ function disableVisabitiySidebar(element) {
 }
 
 function destroyDisclaimer(element) {
-    element.remove();
+    if (localStorage.getItem("disclaimer") == "1") {
+        element.remove();
+        localStorage.setItem("disclaimer", "1");
+    } else {
+        return;
+    }
 }
 
 openbtn.addEventListener("click", (e) => {
@@ -28,3 +33,5 @@ closebtn.addEventListener("click", (e) => {
 disclaimerbtn.addEventListener("click", (e) => {
     destroyDisclaimer(disclaimerctn);
 });
+
+destroyDisclaimer(disclaimerctn);
