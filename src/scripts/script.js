@@ -15,7 +15,7 @@ function disableVisabitiySidebar(element) {
 }
 
 function destroyDisclaimer(element) {
-    element.innerHTML = null;
+    element.remove();
 }
 
 openbtn.addEventListener("click", (e) => {
