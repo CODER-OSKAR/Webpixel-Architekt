@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    user-select: text;
 }
 
 @media (prefers-color-scheme: light) {
@@ -72,6 +73,7 @@ nav {
         gap: 1rem;
         justify-content: center;
         align-items: center;
+        width: auto;
     }
 
     .link-elements {
@@ -107,6 +109,16 @@ nav {
 
 p {
     font-size: clamp(1vw, 1rem, 5vw);
+}
+
+button {
+    border: none;
+    font-size: clamp(16px, 3vw, 1rem);
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--text);
+    user-select: none;
 }
 
 a {
@@ -172,7 +184,6 @@ main {
 
     .main-body {
         width: 80%;
-        max-height: 100vh;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -277,10 +288,13 @@ main {
         .present-cards-section {
             display: flex;
             flex-wrap: wrap;
+            flex: 1 0 auto;
             justify-content: center;
             width: 100%;
+            height: 100%;
             gap: 2rem;
-            flex: 1 1 auto;
+            overflow: hidden;
+            max-height: inherit;
         }
 
         .present-card {
@@ -333,19 +347,52 @@ main {
                 display: grid;
                 grid-template-rows: 1fr auto;
                 justify-content: center;
-                margin: 0 auto;
                 position: relative;
-                padding: min(2.5rem, 3%);
-                gap: 20px;
+                padding: 1rem min(2.5rem, 6%);
                 border-radius: 1rem;
+                text-wrap: wrap;
 
                 .product-text {
-                    display: flex;
-                    flex-direction: column;
-                    flex: 0 0 auto;
-                    gap: 1rem;
+                    display: grid;
+                    grid-template-rows: auto auto 1fr auto;
+                    justify-content: center;
+
+                    gap: 2rem;
                     text-align: center;
-                    list-style-position: inside;
+
+                    ul {
+                        margin: 0 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+                    li {
+                        list-style-type: none;
+                        text-align: start;
+                        width: max-content;
+                    }
+
+                    .li-item-text-container::before {
+                        content: "";
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 32px;
+                        height: 32px;
+                        margin: 0 6px;
+                        background-color: hsl(
+                            from var(--accent) h s calc(l + 40)
+                        );
+
+                        -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'><path d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/></svg>");
+                        -webkit-mask-repeat: no-repeat;
+                        -webkit-mask-size: contain;
+
+                        mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'><path d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/></svg>");
+                        mask-repeat: no-repeat;
+                        mask-size: contain;
+                    }
                 }
 
                 h3 {
@@ -354,6 +401,55 @@ main {
                 }
 
                 .svg-pc-demo {
+                    width: 100%;
+                    max-height: 350px;
+                    height: 200px;
+                    filter: drop-shadow(
+                        0 0 0.15rem hsl(from var(--text) h s calc(l + 30) / 0.2)
+                    );
+                }
+
+                .buyprice-container {
+                    display: flex;
+                    gap: 0.5rem;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 1rem min(0.5rem, 3%);
+
+                    label {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                    }
+
+                    .buyBtn {
+                        max-width: 350px;
+                        background-color: var(--primary);
+                        font-size: clamp(16px, 3vw, 1rem);
+                        cursor: pointer;
+                        border-radius: 1rem;
+                        padding: 0.75rem 1.5rem;
+                        scale: 1;
+                        transition: 0.3s ease;
+                        box-shadow: 6px 0 1rem
+                            hsl(from var(--accent) h s calc(l - 10));
+                        user-select: none;
+                    }
+
+                    .buyBtn:hover {
+                        background-color: hsl(
+                            from var(--primary) h s calc(l + 10)
+                        );
+                        scale: 1.05;
+                        box-shadow: 0 0 1rem 0.5rem
+                            hsl(from var(--accent) h s calc(l - 10));
+                    }
+
+                    .buyBtn:active {
+                        background-color: hsl(
+                            from var(--primary) h s calc(l - 10)
+                        );
+                    }
                 }
             }
         }
