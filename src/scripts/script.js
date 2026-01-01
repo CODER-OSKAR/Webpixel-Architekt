@@ -17,9 +17,8 @@ function disableVisabitiySidebar(element) {
 function destroyDisclaimer(element) {
     if (localStorage.getItem("disclaimer") == "1") {
         element.remove();
-        localStorage.setItem("disclaimer", "1");
     } else {
-        return;
+        localStorage.setItem("disclaimer", "1");
     }
 }
 
