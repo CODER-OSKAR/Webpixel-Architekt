@@ -1,0 +1,10 @@
+.imp-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-wrap-mode: wrap;
+    text-wrap-style: balance;
+    line-height: 1.5;
+    gap: 1.3rem;
+    text-align: center;
+}
