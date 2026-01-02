@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
+:root {
+    --inital-left-margin: 3rem;
+}
+
+main {
+    display: flex;
+    margin: calc(73px + 1rem) 1.5rem;
+    justify-content: center;
+    .main__inner {
+        flex-direction: column !important;
+        display: flex;
+        gap: 3rem;
+        width: 80%;
+
+        .sub-container {
+            flex-direction: column !important;
+            display: flex;
+            gap: 2rem;
+        }
+
+        h2::before {
+            content: "-- ";
+        }
+
+        h2::after {
+            content: " --";
+        }
+
+        .stage1,
+        ul {
+            margin: 0 var(--inital-left-margin);
+        }
+
+        li {
+            div {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 0.25rem;
+                margin: 0 var(--inital-left-margin);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        --inital-left-margin: 2% !important;
+    }
+    .main__inner {
+        width: 100% !important;
+        margin-left: 3%;
+        margin-right: 3%;
+        text-wrap-mode: wrap;
+        text-wrap-style: balance;
+    }
+}

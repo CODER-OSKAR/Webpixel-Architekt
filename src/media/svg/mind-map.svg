@@ -1,0 +1,283 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"
+                                font-family="'Inter', sans-serif">
+
+                                <defs>
+                                    <style>
+                                   
+
+                                        :root {
+                                            --theme-hue: 220;
+
+                                            --bg-dark: hsl(var(--theme-hue), 60%, 5%);
+                                            --bg-panel: hsla(var(--theme-hue), 30%, 10%, 0.8);
+                                            --primary: hsl(var(--theme-hue), 90%, 60%);
+                                            --text-main: #ffffff;
+                                            --text-muted: hsl(var(--theme-hue), 20%, 70%);
+                                            --grid-line: hsla(var(--theme-hue), 50%, 50%, 0.1);
+                                        }
+
+                                        @media (prefers-color-scheme: light) {
+                                            :root {
+                                                --theme-hue: 220;
+
+                                                /* Light Backgrounds: High Lightness (95-100%) and Low Saturation */
+                                                --bg-dark: hsl(var(--theme-hue), 30%, 98%);
+
+                                                /* Semi-transparent panel for depth */
+                                                --bg-panel: hsla(var(--theme-hue), 20%, 94%, 0.8);
+
+                                                /* Primary: Slightly deeper blue for better contrast on light backgrounds */
+                                                --primary: hsl(var(--theme-hue), 85%, 45%);
+
+                                                /* Main Text: Dark blue-grey for readability */
+                                                --text-main: hsl(var(--theme-hue), 40%, 15%);
+
+                                                /* Muted Text: Soft grey-blue */
+                                                --text-muted: hsl(var(--theme-hue), 15%, 45%);
+
+                                                /* Grid Lines: Subtle dark lines */
+                                                --grid-line: hsla(var(--theme-hue), 30%, 20%, 0.05);
+                                            }
+                                        }
+
+                                        /* Animations */
+                                        @keyframes pulse {
+                                            0% {
+                                                filter: drop-shadow(0 0 5px var(--primary));
+                                                transform: scale(1);
+                                            }
+
+                                            50% {
+                                                filter: drop-shadow(0 0 15px var(--primary));
+                                                transform: scale(1.02);
+                                            }
+
+                                            100% {
+                                                filter: drop-shadow(0 0 5px var(--primary));
+                                                transform: scale(1);
+                                            }
+                                        }
+
+                                        @keyframes flow {
+                                            to {
+                                                stroke-dashoffset: -100;
+                                            }
+                                        }
+
+                                        /* FIX: We animate translateY here. Because this is applied to an INNER group,
+         it won't overwrite the global positioning of the OUTER group.
+      */
+                                        @keyframes float {
+                                            0% {
+                                                transform: translateY(0px);
+                                            }
+
+                                            50% {
+                                                transform: translateY(-6px);
+                                            }
+
+                                            100% {
+                                                transform: translateY(0px);
+                                            }
+                                        }
+
+                                        /* Typography */
+                                        .title {
+                                            font-size: 24px;
+                                            font-weight: 800;
+                                            fill: var(--text-main);
+                                            letter-spacing: 1px;
+                                        }
+
+                                        .heading {
+                                            font-size: 15px;
+                                            font-weight: 600;
+                                            fill: var(--primary);
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.5px;
+                                        }
+
+                                        .body {
+                                            font-size: 13px;
+                                            font-weight: 400;
+                                            fill: var(--text-muted);
+                                            line-height: 1.6;
+                                        }
+
+                                        /* Shapes */
+                                        .card-bg {
+                                            fill: var(--bg-panel);
+                                            stroke: var(--primary);
+                                            stroke-width: 1;
+                                            stroke-opacity: 0.4;
+                                            rx: 12;
+                                        }
+
+                                        .center-bg {
+                                            fill: var(--bg-dark);
+                                            stroke: var(--primary);
+                                            stroke-width: 3;
+                                            rx: 40;
+                                            animation: pulse 4s infinite ease-in-out;
+                                        }
+
+                                        /* Connectors */
+                                        .connector {
+                                            fill: none;
+                                            stroke: var(--primary);
+                                            stroke-width: 2;
+                                            stroke-opacity: 0.15;
+                                        }
+
+                                        .connector-active {
+                                            fill: none;
+                                            stroke: var(--primary);
+                                            stroke-width: 2;
+                                            stroke-dasharray: 5 15;
+                                            animation: flow 3s linear infinite;
+                                            opacity: 0.8;
+                                        }
+
+                                        /* Apply animation to the inner wrapper */
+                                        .anim-wrapper {
+                                            animation: float 6s ease-in-out infinite;
+                                        }
+
+                                        /* Stagger animations for organic feel */
+                                        .stagger-1 {
+                                            animation-delay: 0s;
+                                        }
+
+                                        .stagger-2 {
+                                            animation-delay: 1.5s;
+                                        }
+
+                                        .stagger-3 {
+                                            animation-delay: 3s;
+                                        }
+                                    </style>
+
+                                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--grid-line)"
+                                            stroke-width="1" />
+                                    </pattern>
+                                </defs>
+
+                                <rect width="100%" height="100%" fill="var(--bg-dark)" />
+                                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                                <g transform="translate(600, 400)">
+                                    <path d="M0,0 C-100,0 -150,-150 -350,-200" class="connector" />
+                                    <path d="M0,0 C-100,0 -150,-150 -350,-200" class="connector-active" />
+
+                                    <path d="M0,0 C0,-100 0,-150 0,-260" class="connector" />
+                                    <path d="M0,0 C0,-100 0,-150 0,-260" class="connector-active" />
+
+                                    <path d="M0,0 C100,0 150,-150 350,-200" class="connector" />
+                                    <path d="M0,0 C100,0 150,-150 350,-200" class="connector-active" />
+
+                                    <path d="M0,0 C150,0 200,0 400,0" class="connector" />
+                                    <path d="M0,0 C150,0 200,0 400,0" class="connector-active" />
+
+                                    <path d="M0,0 C100,0 150,150 350,220" class="connector" />
+                                    <path d="M0,0 C100,0 150,150 350,220" class="connector-active" />
+
+                                    <path d="M0,0 C-100,0 -150,150 -350,220" class="connector" />
+                                    <path d="M0,0 C-100,0 -150,150 -350,220" class="connector-active" />
+
+                                    <path d="M0,0 C-150,0 -200,0 -400,0" class="connector" />
+                                    <path d="M0,0 C-150,0 -200,0 -400,0" class="connector-active" />
+                                </g>
+
+                                <g transform="translate(600, 400)">
+                                    <rect x="-140" y="-40" width="280" height="80" class="center-bg" />
+                                    <text x="0" y="10" text-anchor="middle" class="title">EINZELUNTERNEHMUNG</text>
+                                </g>
+
+                                <g transform="translate(250, 200)">
+                                    <g class="anim-wrapper stagger-1">
+                                        <rect x="-160" y="-60" width="320" height="120" class="card-bg" />
+                                        <circle cx="-160" cy="0" r="4" fill="var(--primary)" />
+                                        <text x="-140" y="-30" class="heading">Unternehmer / Inhaber</text>
+                                        <line x1="-140" y1="-20" x2="-80" y2="-20" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-140" y="10" class="body">➤ Trägt alle Entscheidungen</text>
+                                        <text x="-140" y="35" class="body">➤ Trägt das volle Risiko alleine</text>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(600, 140)">
+                                    <g class="anim-wrapper stagger-2">
+                                        <rect x="-150" y="-60" width="300" height="120" class="card-bg" />
+                                        <circle cx="0" cy="60" r="4" fill="var(--primary)" />
+                                        <text x="-130" y="-30" class="heading">Haftung</text>
+                                        <line x1="-130" y1="-20" x2="-80" y2="-20" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-130" y="10" class="body">➤ Unbeschränkt (Privat &amp; Betrieb)</text>
+                                        <text x="-130" y="35" class="body">➤ Hohes persönliches Risiko</text>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(950, 200)">
+                                    <g class="anim-wrapper stagger-3">
+                                        <rect x="-160" y="-70" width="320" height="140" class="card-bg" />
+                                        <circle cx="160" cy="0" r="4" fill="var(--primary)" />
+                                        <text x="-140" y="-40" class="heading">Kapital &amp; Finanzierung</text>
+                                        <line x1="-140" y1="-30" x2="-80" y2="-30" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-140" y="0" class="body">➤ Eigenkapital des Inhabers</text>
+                                        <text x="-140" y="25" class="body">➤ Fremdkapital (schwieriger)</text>
+                                        <text x="-140" y="50" class="body">➤ Keine weiteren Gesellschafter</text>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(200, 400)">
+                                    <g class="anim-wrapper stagger-2">
+                                        <rect x="-150" y="-50" width="300" height="100" class="card-bg" />
+                                        <circle cx="-150" cy="0" r="4" fill="var(--primary)" />
+                                        <text x="-130" y="-20" class="heading">Außenwirkung</text>
+                                        <line x1="-130" y1="-10" x2="-80" y2="-10" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-130" y="15" class="body">➤ Oft stark personengebunden</text>
+                                        <text x="-130" y="40" class="body">➤ "Kleineres" Image bei Konzernen</text>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(1000, 400)">
+                                    <g class="anim-wrapper stagger-1">
+                                        <rect x="-150" y="-60" width="300" height="150" class="card-bg" />
+                                        <circle cx="150" cy="0" r="4" fill="var(--primary)" />
+                                        <text x="-130" y="-30" class="heading">Gründung</text>
+                                        <line x1="-130" y1="-20" x2="-80" y2="-20" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-130" y="10" class="body">➤ Sehr einfach &amp; schnell</text>
+                                        <text x="-130" y="35" class="body">➤ Kein Mindestkapital</text>
+                                        <text x="-130" y="60" class="body">➤ Nur Gewerbeanmeldung</text>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(250, 620)">
+                                    <g class="anim-wrapper stagger-3">
+                                        <rect x="-160" y="-60" width="320" height="120" class="card-bg" />
+                                        <circle cx="-160" cy="0" r="4" fill="var(--primary)" />
+                                        <text x="-140" y="-30" class="heading">Buchführung</text>
+                                        <line x1="-140" y1="-20" x2="-80" y2="-20" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-140" y="10" class="body">➤ Einnahmen-Überschuss (EÜR)</text>
+                                        <text x="-140" y="35" class="body">➤ Bilanz erst ab hohen Umsätzen</text>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(950, 620)">
+                                    <g class="anim-wrapper stagger-2">
+                                        <rect x="-160" y="-60" width="320" height="120" class="card-bg" />
+                                        <circle cx="160" cy="0" r="4" fill="var(--primary)" />
+                                        <text x="-140" y="-30" class="heading">Gewinn &amp; Steuern</text>
+                                        <line x1="-140" y1="-20" x2="-80" y2="-20" stroke="var(--primary)"
+                                            stroke-width="2" />
+                                        <text x="-140" y="10" class="body">➤ Gewinn gehört Inhaber privat</text>
+                                        <text x="-140" y="35" class="body">➤ Einkommensteuer + Gewerbesteuer</text>
+                                    </g>
+                                </g>
+
+                            </svg>
