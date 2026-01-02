@@ -631,12 +631,14 @@ main {
     }
 
     .disclaimer {
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
         width: max(50%, 350px);
         align-items: center;
         justify-content: center;
         height: auto;
+        max-height: 80vh;
         background: linear-gradient(
             120deg,
             var(--secondary),
